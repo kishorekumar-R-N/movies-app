@@ -1,7 +1,7 @@
 export const TMDB_CONFIG = {
   BASE_URL: 'https://api.themoviedb.org/3',
   API_KEY: process.env.EXPO_PUBLIC_MOVIE_API_KEY,
-  Headers: {
+  headers: {
     Accept: 'application/json',
     Authorization: `Bearer ${process.env.EXPO_PUBLIC_MOVIE_API_KEY}`,
   }
@@ -14,11 +14,12 @@ export const fetchMovies=async({query}:{query:string})=>{
 
   const response=await fetch(endpoint, {
     method: 'GET',
-    headers: TMDB_CONFIG.Headers,
+    headers: TMDB_CONFIG.headers,
   });
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch movies: ${response.statusText}`);
+    // @ts-ignore
+    throw new Error(`Failed to fetch movies`, response.statusText);
   }
   const data=await response.json();
   return data.results;

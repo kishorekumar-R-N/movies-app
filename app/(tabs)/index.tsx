@@ -17,7 +17,6 @@ export default function Index() {
          error:moviesError} = useFetch(() => fetchMovies({
           query: ''
          }))
-    console.log("hello");
 
   return (
     
@@ -44,7 +43,7 @@ export default function Index() {
          <>
           <Text className="text-lg text-white font-bold mt-5 mb-3">Latest Movies</Text>
 
-          <FlatList
+           <FlatList
             data={movies}
             renderItem={({item}) => (
               <MovieCard
@@ -62,7 +61,7 @@ export default function Index() {
             }}
             className="mt-2 pb-32"
             scrollEnabled={false}
-            />
+            /> 
          </>
       </View>
         )}
